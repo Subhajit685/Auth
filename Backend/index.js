@@ -4,6 +4,7 @@ import { conntecteddb } from "./db/connectdb.js";
 import userRoute from "./routes/user.route.js"
 import cookieParser from "cookie-parser";
 import User from "./models/user.modle.js";
+import path from "path"
 
 
 
@@ -26,6 +27,17 @@ app.get("/", async (req, res) =>{
         
     }
 })
+
+const __dirname = path.resolve()
+
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(__dirname, "/frontend/dist")))
+
+    app.get("*", (req, res)=>{
+        res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
+    })
+}
 
 app.listen(PORT, ()=>{
     conntecteddb()
