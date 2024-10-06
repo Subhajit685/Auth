@@ -4,8 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon Backend/index.js",
-    "start": "node Backend/index.js",
+    "dev": "NODE_ENV=development nodemon Backend/index.js",
+    "start": "NODE_ENV=production node Backend/index.js",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",
