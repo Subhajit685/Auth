@@ -23,6 +23,7 @@ app.use("/api/user", userRoute)
 app.get("/", async (req, res) =>{
     try {
         await User.bulk.find({isVerify: false}).delete()
+        return res.join({seccess : true})
     } catch (error) {
         
     }
